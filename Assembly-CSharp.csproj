@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\cubeTest.cs" />
      <Compile Include="Assets\Scripts\ActionItem.cs" />
      <Compile Include="Assets\Scripts\ActionItems\SignPost.cs" />
      <Compile Include="Assets\Scripts\BaseStat.cs" />

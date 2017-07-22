@@ -8,10 +8,22 @@ public class Interactable : MonoBehaviour {
     
     public NavMeshAgent playerAgent;
 
+    public bool hasInteracted;
+
 
     public virtual void MoveToInteraction(NavMeshAgent playerAgent)
     {
         this.playerAgent = playerAgent;
+
+        if (!hasInteracted && playerAgent != null && !playerAgent.pathPending)
+        {
+            playerAgent.GetComponent<WorldInteraction>().grounded = false;
+            if (playerAgent.remainingDistance <= playerAgent.stoppingDistance)
+            {
+                hasInteracted = true;
+                playerAgent.GetComponent<WorldInteraction>().grounded = true;
+            }
+        }
     }
 
     private void Update()
