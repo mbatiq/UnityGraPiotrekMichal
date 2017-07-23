@@ -88,17 +88,7 @@ public class WorldInteraction : MonoBehaviour {
             {
                 Debug.DrawLine(interactionRay.origin, InteractionInfo.point);
 
-                interactedObject.GetComponent<WorldInteraction>();
-
-                if (!hasInteracted && playerAgent != null && !playerAgent.pathPending)
-                {
-                    playerAgent.GetComponent<WorldInteraction>().grounded = false;
-                    if (playerAgent.remainingDistance <= playerAgent.stoppingDistance)
-                    {
-                        hasInteracted = true;
-                        playerAgent.GetComponent<WorldInteraction>().grounded = true;
-                    }
-                }
+                interactedObject.GetComponent<Interactable>().MoveToInteraction(playerAgent);
             }
             else
             {
